@@ -82,6 +82,6 @@ def descargar() :
 
     # delete the tsv files in dir
     for f in finp_tsv :
-        remove(dir + f)
+        remove(f)
 
     return(True)
