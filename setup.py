@@ -27,7 +27,7 @@ setup(
     package_dir = {"": "src"},
     packages = find_packages(where="src"),
     python_requires = ">=3.7, <4",
-    install_requires = ["peppercorn", "duckdb", "wget", "datetime", "pandas"],
+    install_requires = ["peppercorn", "duckdb", "wget", "datetime"],
     extras_require = {
         "dev": ["check-manifest"],
         "test": ["coverage"],
