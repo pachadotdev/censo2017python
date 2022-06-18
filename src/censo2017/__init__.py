@@ -1,5 +1,3 @@
-import duckdb
-
-def main():
-    """Entry point for the application script"""
-    print("Call your main application code here")
+from .funciones_auxiliares import *
+from .crear_esquema import *
+from .descargar import *

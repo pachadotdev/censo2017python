@@ -1,12 +1,12 @@
-# TODO: add tests
-# import unittest
+# TODO: add suitable tests
 
-# from sample.descargar import add_one
+import unittest
+from re import sub
+from censo2017 import censo_ruta
 
-# class TestSimple(unittest.TestCase):
+class TestSimple(unittest.TestCase) :
+    def test_censo_ruta(self) :
+        self.assertStringMatchs(sub(r'^.*?/', '/', censo_ruta()), '/.censo2017')
 
-#    def test_add_one(self):
-#        self.assertEqual(add_one(5), 6)
-
-# if __name__ == '__main__':
-#    unittest.main()
+if __name__ == '__main__':
+    unittest.main()

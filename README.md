@@ -19,12 +19,11 @@ estos datos. Estos mismos datos en DVD posteriormente quedaron
 disponibles en las [Bases de Datos del
 INE](https://www.ine.cl/estadisticas/sociales/censos-de-poblacion-y-vivienda/poblacion-y-vivienda).
 
-Despues de la primera llamada a `library(censo2017)` se le pedira al
-usuario que descargue la base usando `censo_descargar_base()` y se puede
-modificar la ruta de descarga con la variable de entorno
-`CENSO_BBDD_DIR`.
+Despues de la primera llamada a `import censo2017` es necesario
+descargar la base de datos usando `censo_descargar()`.
 
-Este software es una adaptacion del paquete original de R censo2017. Para hacer el port me base en [Python Sample Project](https://github.com/pypa/sampleproject).
+Este software es una adaptacion del paquete original de R censo2017. Para hacer el port me base 
+en [Python Sample Project](https://github.com/pypa/sampleproject).
 
 # Publico objetivo
 
@@ -33,23 +32,20 @@ conveniente a datos censales directamente en Python o Jupyer Notebook.
 
 # Requerimientos de instalacion
 
-Este paquete necesita 3.5 GB libres para la crear la base de datos
+Esta libreria necesita 3.5 GB libres para la crear la base de datos
 localmente.
 
 # Instalacion
 
-## Pre-requisitos
+## Directamente desde GitHub
 
-Desde la linea de comandos se debe instalar primero
+Se puede usar cualquiera de las siguientes opciones desde la linea de comandos
 
+```bash
+pip install git+https://github.com/pachadotdev/censo2017_python.git#egg=censo2017
 ```
-pip install duckdb
-pip install wget
-```
 
-Luego se puede hacer lo siguiente desde la linea de comandos
-
-```
+```bash
 git clone git@github.com:pachadotdev/censo2017_python.git
 cd censo2017_python
 python setup.py install --user
@@ -89,63 +85,17 @@ Los cambios concretos respecto de la base original son los siguientes:
 Ademas de los datos del Censo, inclui la descripcion de las variables en
 formato tabla (y no en XML como se obtiene del DVD). La ventaja de esto
 es poder consultar rapidamente lo que significan los codigos de
-variables y su etiquetado, por ejemplo:
-
-``` r
-# con la bbdd instalada
-library(censo2017)
-library(dplyr)
-
-censo_tabla("variables") %>% 
-  filter(variable == "p01")
-#> # A tibble: 1 x 5
-#>   tabla     variable descripcion      tipo    rango 
-#>   <chr>     <chr>    <chr>            <chr>   <chr> 
-#> 1 viviendas p01      Tipo de Vivienda integer 1 - 10
-
-censo_tabla("variables_codificacion") %>% 
-  filter(variable == "p01")
-#> # A tibble: 12 x 4
-#>    tabla     variable valor descripcion                                         
-#>    <chr>     <chr>    <int> <chr>                                               
-#>  1 viviendas p01          1 Casa                                                
-#>  2 viviendas p01          2 Departamento en Edificio                            
-#>  3 viviendas p01          3 Vivienda Tradicional Indígena (Ruka, Pae Pae u Otra…
-#>  4 viviendas p01          4 Pieza en Casa Antigua o en Conventillo              
-#>  5 viviendas p01          5 Mediagua, Mejora, Rancho o Choza                    
-#>  6 viviendas p01          6 Móvil (Carpa, Casa Rodante o Similar)               
-#>  7 viviendas p01          7 Otro Tipo de Vivienda Particular                    
-#>  8 viviendas p01          8 Vivienda Colectiva                                  
-#>  9 viviendas p01          9 Operativo Personas en Tránsito (No Es Vivienda)     
-#> 10 viviendas p01         10 Operativo Calle (No Es Vivienda)                    
-#> 11 viviendas p01         11 Valor Perdido                                       
-#> 12 viviendas p01          0 No Aplica
-```
-
-# Relacion de Censo 2017 con Chilemapas
-
-Todos los datos de estos repositorios contemplan 15 regiones pues los
-archivos del Censo se entregan de esta forma y este paquete esta 100%
-orientado a facilitar el acceso a datos.
-
-Por su parte, [chilemapas](https://docs.ropensci.org/censo2017) se
-centra unicamente en los mapas y tambien usa las cartografias del DVD
-del Censo para entregar mapas simplificados (de menor detalle y mas
-livianos). Chilemapas cuenta con una transformacion de codigos para dar
-cuenta de la creacion de la Region de Niuble.
-
-En resumen, censo2017 permite construir estadisticas demograficas y
-chilemapas ayuda a mostrarlas en un mapa usando ggplot2 (u otro paquete
-como tmap).
+variables y su etiquetado, por ejemplo como se explica en 
+[demo.ipynbn](https://github.com/pachadotdev/censo2017_python/blob/main/demo.ipynb)
 
 # Cita este trabajo
 
 Si usas `censo2017` en trabajos academicos u otro tipo de publicacion
 por favor usa la siguiente cita:
 
-    Mauricio Vargas (2020). censo2017: Base de Datos de Facil Acceso del Censo
-      2017 de Chile (2017 Chilean Census Easy Access Database). R package version
-      0.1. https://docs.ropensci.org/censo2017/
+    Mauricio Vargas (2022). censo2017: Base de Datos de Facil Acceso del Censo
+      2017 de Chile (2017 Chilean Census Easy Access Database). Python package version
+      0.0.1. https://github.com/pachadotdev/censo2017_python
 
 Entrada para BibTeX:
 
@@ -153,19 +103,11 @@ Entrada para BibTeX:
       title = {censo2017: Base de Datos de F\'acil Acceso del Censo 2017 de Chile
     (2017 Chilean Census Easy Access Database)},
       author = {Mauricio Vargas},
-      year = {2020},
-      note = {R package version 0.1},
-      url = {https://docs.ropensci.org/censo2017/},
+      year = {2022},
+      note = {Python package version 0.0.1},
+      url = {https://github.com/pachadotdev/censo2017_python},
       doi = {10.5281/zenodo.4277761}
     }
-
-# Contribuciones
-
-Para contribuir a este proyecto debes estar de acuerdo con el [Codigo de
-Conducta de rOpenSci](https://ropensci.org/code-of-conduct/). Me es util
-contar con mas ejemplos, mejoras a las funciones y todo lo que ayude a
-la comunidad. Si tienes algo que aportar me puedes dejar un issue o pull
-request.
 
 # Agradecimientos
 

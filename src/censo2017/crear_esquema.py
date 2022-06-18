@@ -1,11 +1,10 @@
 import duckdb
 
-from censo2017 import censo_conectar
-from censo2017 import censo_desconectar
+from censo2017 import archivo_sql
 
-def censo_crear_esquema() :
+def crear_esquema() :
     # connect to database
-    con = censo_conectar()
+    con = duckdb.connect(database = archivo_sql(), read_only = False)
 
     # create schema
 
@@ -155,7 +154,7 @@ def censo_crear_esquema() :
     con.execute('CREATE UNIQUE INDEX zonas_zonaloc_ref_id ON zonas (zonaloc_ref_id);')
     con.execute('CREATE UNIQUE INDEX zonas_geocodigo ON zonas (geocodigo);')
 
-    censo_desconectar()
+    con.close()
 
     return(True)
     
