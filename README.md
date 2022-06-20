@@ -32,7 +32,7 @@ conveniente a datos censales directamente en Python o Jupyer Notebook.
 
 # Requerimientos de instalacion
 
-Esta libreria necesita 3.5 GB libres para la crear la base de datos
+Esta libreria necesita 1.5 GB libres para la crear la base de datos
 localmente.
 
 # Instalacion

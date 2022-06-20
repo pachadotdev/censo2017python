@@ -16,7 +16,7 @@ def ruta() :
     return(dir)
 
 def archivo_sql() :
-    return(ruta() + '/' + 'censo_2017_duckdb_v' + duckdb.__version__.replace('\.', '') + '.sql')
+    return(ruta() + '/' + 'censo_2017_duckdb_v' + duckdb.__version__.replace('.', '') + '.sql')
 
 def eliminar(preguntar = True) :
     # ask the user, stop if selects anything different from 1
