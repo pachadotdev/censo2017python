@@ -39,7 +39,3 @@ def eliminar(preguntar = True) :
         rmtree(dir)
 
     return(True)
-
-
-
-
