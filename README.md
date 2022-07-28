@@ -42,12 +42,12 @@ localmente. Una vez creada la base, esta ocupa 1.0 GB en disco.
 Se puede usar cualquiera de las siguientes opciones desde la linea de comandos
 
 ```bash
-pip install git+https://github.com/pachadotdev/censo2017_python.git#egg=censo2017
+pip install git+https://github.com/pachadotdev/censo2017python.git#egg=censo2017
 ```
 
 ```bash
-git clone git@github.com:pachadotdev/censo2017_python.git
-cd censo2017_python
+git clone git@github.com:pachadotdev/censo2017python.git
+cd censo2017python
 python setup.py install --user
 ```
 
